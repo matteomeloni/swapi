@@ -14,7 +14,7 @@ class PeopleService
         foreach ($peoples as $people) {
             $planet = PlanetService::retrieveData($people['homeworld']);
 
-            People::create([
+            People::firstOrCreate([
                 'planet_id' => $planet->id,
                 'name' => $people['name'],
                 'birth_year' => $people['birth_year'],

@@ -1,64 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+#Documentation
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+###Retrieve data from https://swapi.dev/
 
-## About Laravel
+To get people and planets data from https://swapi.dev, run this artisan command
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+`php artisan swapi:retrieve-data`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##API
+###Get All People
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+####Request
+`GET /api/people`
+####Response
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "planet_id": 1,
+            "name": "Sly Moore",
+            "birth_year": "unknown",
+            "eye_color": "white",
+            "gender": "female",
+            "hair_color": "none",
+            "height": "178",
+            "mass": "48",
+            "skin_color": "pale",
+            "created_at": "2021-08-21T16:17:11.000000Z",
+            "updated_at": "2021-08-21T16:17:11.000000Z"
+        },
+        {
+            "id": 2,
+            "planet_id": 2,
+            "name": "Tion Medon",
+            "birth_year": "unknown",
+            "eye_color": "black",
+            "gender": "male",
+            "hair_color": "none",
+            "height": "206",
+            "mass": "80",
+            "skin_color": "grey",
+            "created_at": "2021-08-21T16:17:11.000000Z",
+            "updated_at": "2021-08-21T16:17:11.000000Z"
+        },
+        ...
+    ],
+    "first_page_url": "http://swapi.test/api/people?page=1",
+    "from": 1,
+    "next_page_url": "http://swapi.test/api/people?page=2",
+    "path": "http://swapi.test/api/people",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 15
+}
+````
 
-## Learning Laravel
+####To filter the results use 
+`GET /api/people?filter={string_to_search}`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+####To sort the results use
+`GET /api/people?sort=column,[asc|desc]`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+###Get People Details
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+####Request
+`GET /api/people/{people_id}`
+####Response
+```json
+{
+    "id": 1,
+    "planet_id": 1,
+    "name": "Sly Moore",
+    "birth_year": "unknown",
+    "eye_color": "white",
+    "gender": "female",
+    "hair_color": "none",
+    "height": "178",
+    "mass": "48",
+    "skin_color": "pale",
+    "created_at": "2021-08-21T16:17:11.000000Z",
+    "updated_at": "2021-08-21T16:17:11.000000Z",
+    "planet": {
+        "id": 1,
+        "name": "Umbara",
+        "diameter": "unknown",
+        "rotation_period": "unknown",
+        "gravity": "unknown",
+        "population": "unknown",
+        "climate": "unknown",
+        "terrain": "unknown",
+        "surface_water": "unknown",
+        "films": [],
+        "url": "https://swapi.dev/api/planets/60/",
+        "created_at": "2021-08-21T16:17:11.000000Z",
+        "updated_at": "2021-08-21T16:17:11.000000Z"
+    }
+}
+````

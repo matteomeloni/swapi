@@ -16,7 +16,7 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->id();
             $table->foreignId('planet_id')->constrained();
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('birth_year');
             $table->string('eye_color');
             $table->string('gender');

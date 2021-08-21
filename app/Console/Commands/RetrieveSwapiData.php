@@ -38,7 +38,7 @@ class RetrieveSwapiData extends Command
      */
     public function handle()
     {
-        $this->info('Starting Retrieve Data');
+        $this->warn('Starting Retrieve Data');
 
         PeopleService::retrieveData();
 

@@ -10,7 +10,7 @@ class PeopleController extends Controller
     {
         $data = People::textSearch()
             ->sort()
-            ->paginate();
+            ->simplePaginate();
 
         return response($data);
     }
