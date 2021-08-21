@@ -1,22 +1,22 @@
-#Documentation
+# Documentation
 
-###Retrieve data from https://swapi.dev/
+### Retrieve data from https://swapi.dev/
 
 To get people and planets data from https://swapi.dev, run this artisan command
 
 `php artisan swapi:retrieve-data`
 
 
-##API
+## API
 
-###Get All People
+### Get All People
 
 
-####Request
+#### Request
 
 `GET /api/people`
 
-####Response
+#### Response
 
 ```json
 {
@@ -63,24 +63,24 @@ To get people and planets data from https://swapi.dev, run this artisan command
 ````
 
 
-####To filter the results use 
+#### To filter the results use 
 
 `GET /api/people?filter={string_to_search}`
 
 
-####To sort the results use
+#### To sort the results use
 
 `GET /api/people?sort=column,[asc|desc]`
 
 
-###Get People Details
+### et People Details
 
 
-####Request
+#### Request
 
 `GET /api/people/{people_id}`
 
-####Response
+#### Response
 
 ```json
 {
