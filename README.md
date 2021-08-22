@@ -1,5 +1,15 @@
 # Documentation
 
+### Installation
+`composer install`
+
+`cp .env.example .env`
+
+put your db settings into .env
+
+`php artisan key:generate`
+
+
 ### Retrieve data from https://swapi.dev/
 
 To get people and planets data from https://swapi.dev, run this artisan command
